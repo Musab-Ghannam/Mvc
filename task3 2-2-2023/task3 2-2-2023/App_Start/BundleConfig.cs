@@ -24,6 +24,7 @@ namespace task3_2_2_2023
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                        "~/Content/StyleSheet1.css",
                       "~/Content/site.css"));
         }
     }

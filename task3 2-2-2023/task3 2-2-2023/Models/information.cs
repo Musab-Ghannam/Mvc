@@ -27,6 +27,11 @@ namespace task3_2_2_2023.Models
         [EmailAddress]
         public string EMail { get; set; }
         //[RegularExpression(@"^(?[0]{1}?[7]{1}?([7-9]{1}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
+
+        [Required]
+        [RegularExpression("((079)|(078)|(077)){1}[0-9]{7}", ErrorMessage = "Enter A Valid Jordanian Phone Number")]
+
+
         public string Phone { get; set; }
         [Range(18, 50)]
 
@@ -53,7 +58,9 @@ namespace task3_2_2_2023.Models
             }
         }
 
+        public string Cv { get; set; }
 
+        public string img { get; set; }
 
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,6 +18,37 @@ namespace task3_2_2_2023.Controllers
         // GET: information
         public ActionResult Index()
         {
+            return View(db.information.ToList());
+
+
+
+        }
+
+        [HttpPost]
+        public ActionResult Index(string FNAME ,string SEARCH)
+
+            
+        {
+            if (SEARCH == "FNAME") { 
+            var search=db.information.Where(c =>c.First_Name.Contains(FNAME));
+            
+            return View(search.ToList());
+            }else if(SEARCH == "LNAME")
+            {
+
+                var search = db.information.Where(c => c.First_Name.Contains(FNAME));
+
+                return View(search.ToList());
+
+            }
+            else if(SEARCH == "Email")
+            {
+                var search = db.information.Where(c => c.First_Name.Contains(FNAME));
+
+                return View(search.ToList());
+
+            }
+
             return View(db.information.ToList());
         }
 
@@ -46,10 +78,27 @@ namespace task3_2_2_2023.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,First_Name,Last_Name,EMail,Phone,Age,Job_title,Gender")] information information)
+        public ActionResult Create([Bind(Include = "Id,First_Name,Last_Name,EMail,Phone,Age,Job_title,Gender,img,Cv")] information information, HttpPostedFileBase img, HttpPostedFileBase Cv)
         {
             if (ModelState.IsValid)
             {
+                if (img != null && img.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(img.FileName);
+                    var path = Path.Combine(Server.MapPath("~/img"), fileName);
+                    img.SaveAs(path);
+                    information.img = fileName;
+                }
+                if (Cv != null && Cv.ContentLength > 0)
+                {
+                    var fileName = Cv.FileName;
+                    var path = Path.Combine(Server.MapPath("~/files"), fileName);
+                    Cv.SaveAs(path);
+                    information.Cv= fileName;
+                }
+
+
+
                 db.information.Add(information);
                 db.SaveChanges();
                 return RedirectToAction("Index");

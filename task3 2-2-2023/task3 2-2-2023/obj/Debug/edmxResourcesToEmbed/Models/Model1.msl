@@ -4,6 +4,8 @@
     <EntitySetMapping Name="information">
       <EntityTypeMapping TypeName="JordanInfoModel.information">
         <MappingFragment StoreEntitySet="information">
+          <ScalarProperty Name="Cv" ColumnName="Cv" />
+          <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="First_Name" ColumnName="First Name" />
           <ScalarProperty Name="Last_Name" ColumnName="Last Name" />

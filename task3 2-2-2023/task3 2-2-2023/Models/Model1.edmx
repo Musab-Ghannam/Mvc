@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JordanInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JordanInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="information">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,12 +17,13 @@
           <Property Name="Age" Type="int" />
           <Property Name="Job title" Type="varchar" MaxLength="100" />
           <Property Name="Gender" Type="bit" />
+          <Property Name="img" Type="varchar(max)" />
+          <Property Name="Cv" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="JordanInfoModelStoreContainer">
           <EntitySet Name="information" EntityType="Self.information" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JordanInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -38,6 +39,8 @@
           <Property Name="Age" Type="Int32" />
           <Property Name="Job_title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Gender" Type="Boolean" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cv" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="JordanInfoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="information" EntityType="Self.information" />
@@ -51,6 +54,8 @@
           <EntitySetMapping Name="information">
             <EntityTypeMapping TypeName="JordanInfoModel.information">
               <MappingFragment StoreEntitySet="information">
+                <ScalarProperty Name="Cv" ColumnName="Cv" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="First_Name" ColumnName="First Name" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last Name" />

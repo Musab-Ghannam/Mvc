@@ -12,6 +12,8 @@
     <Property Name="Age" Type="int" />
     <Property Name="Job title" Type="varchar" MaxLength="100" />
     <Property Name="Gender" Type="bit" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="Cv" Type="varchar(max)" />
   </EntityType>
   <EntityContainer Name="JordanInfoModelStoreContainer">
     <EntitySet Name="information" EntityType="Self.information" Schema="dbo" store:Type="Tables" />

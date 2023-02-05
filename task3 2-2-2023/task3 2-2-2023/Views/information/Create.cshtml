@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "information", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>information</h4>
         <hr />
@@ -81,16 +81,43 @@
 
 
             @*<div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.Gender == true ? "Male" : "Female")
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Gender == true ? "Male" : "Female")
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
 
 
 
 
 
+                    </div>
+                </div>*@
+
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        <input type="file" name="img" id="img" required />
+                        @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>*@
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cv, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        <input type="file" name="Cv" id="Cv" required />
+                        @Html.ValidationMessageFor(model => model.Cv, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="form-group">

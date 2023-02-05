@@ -4,10 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>INFORMATION</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+
+
+
+    @using (Html.BeginForm())
+
+    {
+        <b>Search option : </b>@Html.RadioButton("SEARCH", "FNAME") <text>  Fname     </text>
+
+        @Html.RadioButton("SEARCH", "LNAME") <text>  Lname     </text>
+
+        @Html.RadioButton("SEARCH", "Email") <text>  Email    </text>
+
+
+
+
+
+        @Html.TextBox("FNAME");
+
+        <input type="submit" name="SEARCH" value="search" />
+
+    }
+
+
 </p>
 <table class="table">
     <tr>
@@ -29,10 +53,22 @@
         <th>
             @Html.DisplayNameFor(model => model.Job_title)
         </th>
+
+
+
         <th>
             @Html.DisplayNameFor(model => model.Gender)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cv)
+        </th>
+
         <th></th>
+
+
     </tr>
 
     @foreach (var item in Model)
@@ -62,7 +98,7 @@
 
 
 
-              
+
                 <div>
                     @if (item.Gender == null)
                     {
@@ -73,15 +109,23 @@
                         @Html.DisplayFor(modelItem => item.GenderDisplay)
                     }
                 </div>
-              
-       
-       
 
 
 
 
 
 
+
+
+
+            </td>
+            <td>
+
+            <img width="50" style="align-items:center;" src="/img/@Html.DisplayFor(modelItem => item.img)" >
+            </td>
+            <td>
+                <a href="~/files/@item.Cv" download>Download CV</a>
+                @*@Html.DisplayFor(modelItem => item.Cv)*@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
