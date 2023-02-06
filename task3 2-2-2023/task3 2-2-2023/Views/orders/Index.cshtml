@@ -1,0 +1,48 @@
+﻿@model IEnumerable<task3_2_2_2023.Models.order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+   <a style="text-decoration:none;color:black;font-weight:bold" href="https://localhost:44399/information/Index">information</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orderdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.information.First_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+
+            @*@Html.DisplayFor(modelItem => item.orderdate)*@
+
+            @*@Html.DisplayFor(modelItem => item.orderdate.ToString("yyyy-MM-dd HH:mm"))*@
+
+            @Html.DisplayFor(modelItem => item.orderdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.information.First_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.orderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.orderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.orderId })
+        </td>
+    </tr>
+}
+
+</table>

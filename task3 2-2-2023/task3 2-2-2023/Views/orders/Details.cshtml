@@ -1,0 +1,34 @@
+﻿@model task3_2_2_2023.Models.order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orderdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orderdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.information.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.information.First_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.orderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

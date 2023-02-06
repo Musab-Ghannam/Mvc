@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f6f498a781a64efdaf6c09883f28c700" Name="Diagram1">
         <EntityTypeShape EntityType="JordanInfoModel.information" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JordanInfoModel.order" Width="1.5" PointX="3.375" PointY="1.375" />
+        <EntityTypeShape EntityType="JordanInfoModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="JordanInfoModel.FK_order_information1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

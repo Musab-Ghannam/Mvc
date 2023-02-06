@@ -26,5 +26,7 @@ namespace task3_2_2_2023.Models
         }
     
         public virtual DbSet<information> information { get; set; }
+        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

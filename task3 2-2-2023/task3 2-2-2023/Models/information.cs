@@ -61,6 +61,8 @@ namespace task3_2_2_2023.Models
         public string Cv { get; set; }
 
         public string img { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
 
 
     }

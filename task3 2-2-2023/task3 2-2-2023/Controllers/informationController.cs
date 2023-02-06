@@ -36,14 +36,14 @@ namespace task3_2_2_2023.Controllers
             }else if(SEARCH == "LNAME")
             {
 
-                var search = db.information.Where(c => c.First_Name.Contains(FNAME));
+                var search = db.information.Where(c => c.Last_Name.Contains(FNAME));
 
                 return View(search.ToList());
 
             }
             else if(SEARCH == "Email")
             {
-                var search = db.information.Where(c => c.First_Name.Contains(FNAME));
+                var search = db.information.Where(c => c.EMail.Contains(FNAME));
 
                 return View(search.ToList());
 
@@ -73,6 +73,15 @@ namespace task3_2_2_2023.Controllers
             return View();
         }
 
+        public ActionResult Order()
+        {
+            return View(db.orders.ToList());
+        }
+        public PartialViewResult _Order()
+        {
+            var d=db.orders.OrderByDescending(c =>c.orderdate).FirstOrDefault();
+            return PartialView("_Order",d);
+        }
         // POST: information/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
