@@ -1,0 +1,58 @@
+﻿@model taskhaithem.Models.product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productdescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productdescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productpic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productpic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.categoryname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.categoryname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.productId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
