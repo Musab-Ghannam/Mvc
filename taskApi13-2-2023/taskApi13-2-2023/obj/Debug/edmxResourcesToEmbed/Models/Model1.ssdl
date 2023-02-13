@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="universityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="faculty_id" />
+    </Key>
+    <Property Name="faculty_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="facultyName" Type="varchar" MaxLength="75" />
+    <Property Name="facultyimg" Type="varchar" MaxLength="150" />
+    <Property Name="facultydesc" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="specialization">
+    <Key>
+      <PropertyRef Name="specialization_id" />
+    </Key>
+    <Property Name="specialization_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="faculty_id" Type="int" />
+    <Property Name="MajorName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__specializ__facul__4E88ABD4">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="specialization" Type="Self.specialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="faculty_id" />
+      </Principal>
+      <Dependent Role="specialization">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="universityModelStoreContainer">
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialization" EntityType="Self.specialization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__specializ__facul__4E88ABD4" Association="Self.FK__specializ__facul__4E88ABD4">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="specialization" EntitySet="specialization" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

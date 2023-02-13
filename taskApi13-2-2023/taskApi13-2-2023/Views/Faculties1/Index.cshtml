@@ -1,0 +1,45 @@
+﻿@model IEnumerable<taskApi13_2_2023.Models.Faculty>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.facultyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.facultyimg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.facultydesc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.facultyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.facultyimg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.facultydesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.faculty_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.faculty_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.faculty_id })
+        </td>
+    </tr>
+}
+
+</table>

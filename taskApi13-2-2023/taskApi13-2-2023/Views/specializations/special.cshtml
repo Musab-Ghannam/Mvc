@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<taskApi13_2_2023.Models.specialization>
+
+
+@{
+    ViewBag.Title = "special";
+}
+<div style="width: 18rem;display:flex;justify-content:space-between;margin-top:100px">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="card" style="margin-left:150px">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h3>@item.MajorName</h3>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+
+        </div>
+    }
+
+</div>
