@@ -11,12 +11,10 @@ namespace task3_2_2_2023.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class order
     {
         public int orderId { get; set; }
-       
         public Nullable<int> id { get; set; }
         public Nullable<System.DateTime> orderdate { get; set; }
     

@@ -1,0 +1,17 @@
+a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+small, %small {
+  font-size: $small-font-size;
+}
+
+th {
+  font-weight: 500;
+
+  &[scope='row'] {
+    vertical-align: text-top;
+    text-align: left;
+  }
+}

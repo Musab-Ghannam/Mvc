@@ -11,59 +11,27 @@ namespace task3_2_2_2023.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class information
     {
-        public int Id { get; set; }
-        [Required]
-        [StringLength(12)]
-
-        [Display(Name = "First Name")]
-        public string First_Name { get; set; }
-        [StringLength(12)]
-        [Display(Name = "Last Name")]
-        public string Last_Name { get; set; }
-        [EmailAddress]
-        public string EMail { get; set; }
-        //[RegularExpression(@"^(?[0]{1}?[7]{1}?([7-9]{1}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
-
-        [Required]
-        [RegularExpression("((079)|(078)|(077)){1}[0-9]{7}", ErrorMessage = "Enter A Valid Jordanian Phone Number")]
-
-
-        public string Phone { get; set; }
-        [Range(18, 50)]
-
-
-        public Nullable<int> Age { get; set; }
-        [MaxLength(10)]
-        [Display(Name = "Job title")]
-        public string Job_title { get; set; }
-        [Required]
-        public Nullable<bool> Gender { get; set; }
-
-        public string GenderDisplay
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public information()
         {
-            get
-            {
-                if (Gender == null)
-                {
-                    return "Not specified";
-                }
-                else
-                {
-                    return Gender == true ? "Male" : "Female";
-                }
-            }
+            this.orders = new HashSet<order>();
         }
-
-        public string Cv { get; set; }
-
+    
+        public int Id { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string EMail { get; set; }
+        public string Phone { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string Job_title { get; set; }
+        public Nullable<bool> Gender { get; set; }
         public string img { get; set; }
+        public string Cv { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }
-
-
     }
 }

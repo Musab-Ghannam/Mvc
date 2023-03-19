@@ -1,0 +1,44 @@
+// X-SMALL DEVICES
+@mixin xs{
+    @media (max-width: $screen-xs-min) {
+        @content;
+    }
+}
+
+// SMALL DEVICES
+@mixin sm{
+    @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+        @content;
+    }
+}
+
+// MEDIUM DEVICES
+@mixin md{
+    @media (max-width: $screen-md-min) {
+        @content;
+    }
+}
+
+// LARGE DEVICES
+@mixin lg {
+    @media (min-width: $screen-lg-min) {
+        @content;
+    }
+}
+
+// EXTRA LARGE DEVICES
+// @mixin xl{
+//     @media (min-width: $screen-xl-min) {
+//         @content;
+//     }
+// }
+
+// FLEXBOX
+@mixin flex($justify, $gap, $align:center, $direction:row, $wrap: wrap){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    gap: $gap;
+}

@@ -1,0 +1,15 @@
+input, %input, select, %select, textarea, %textarea {
+  line-height: 1.5;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input:disabled, %input--disabled {
+  background-color: $disabled-color;
+}
+
+button:focus, input:focus, %input--focus {
+  outline: none;
+  border-color: #ff6c3c;
+}
+

@@ -1,0 +1,18 @@
+.c-integrated-address {
+  width: 192px;
+  height: 192px;
+
+  display: flex;
+  flex-direction: column;
+  a {
+    align-self: flex-end;
+  }
+
+  textarea {
+    flex: 1;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: $small-font-size;
+  }
+}

@@ -1,0 +1,73 @@
+.c-dual-currency {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 $double-spacing-unit;
+}
+
+.c-currency {
+  overflow: hidden;
+  display: flex;
+  align-items: baseline;
+
+  &, &__currency {
+    font-size: $large-font-size;
+  }
+}
+
+.c-currency--input {
+  display: flex;
+
+  &__native_input {
+    line-height: 1;
+    color: inherit;
+    width: 100%;
+    vertical-align: baseline;
+
+    &::placeholder {
+      color: $brand-disabled;
+    }
+  }
+
+  &__value, &__native_input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    text-align: right;
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.c-currency--primary {
+  font-size: $huge-font-size;
+  color: $brand-primary;
+
+  .c-currency__tail {
+    line-height: 1;
+  }
+
+  .c-currency__tail, &.c-currency__currency {
+    color: $brand-disabled;
+  }
+
+  & .c-currency__currency {
+    margin-left: $base-spacing-unit;
+  }
+}
+
+.c-currency--secondary {
+  line-height: 1;
+
+  color: $text-color;
+
+  .c-currency__tail, &.c-currency__currency {
+    color: $disabled-color;
+  }
+}

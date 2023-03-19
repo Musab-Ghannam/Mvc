@@ -1,0 +1,183 @@
+@import 'base/formalize';
+@import 'base/normalize';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+
+html,body{
+    height: 100%;
+}
+
+.main{
+
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    padding: 0 36px;
+    @include flex(center,24px,center);
+
+    @include sm{
+        padding: 0;
+    }
+
+    &-left-area{
+
+        margin-right: 150px;
+
+        @include sm{
+            margin-right: 0;
+        }
+
+        .position{
+            position: relative;
+            width: 100%;
+        }
+
+        .shape{
+            display: none;
+
+            @include sm{
+                display: block;
+                position: absolute;
+                width: 300px;
+                height: 220px;
+                z-index: -1;
+                background-color: $primary-color;
+            }
+        }
+
+        img{
+            width: 611px;
+            height: 552px;
+
+            @include sm{
+                
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &-right-area{
+
+        width: 425px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @include sm{
+            padding: 0 36px;
+        }
+
+        .title{
+
+            @include sm{
+                font-size: 58px;
+            }
+
+            font-size: 70px;
+        }
+
+        .desc{
+            font-weight: 600;
+        }
+
+        .price{
+            display: flex;
+            align-items: center;
+
+            .total{
+                font-weight: 700;
+                font-size: 36px;
+            }
+
+            .total-desc{
+                margin-left: auto;
+                font-size: 16px;
+                font-weight: 600;
+                color: $text-color;
+            }
+        }
+
+        .reviews{
+            display: flex;
+            gap: 10px;
+
+            .text{
+                font-weight: 600;
+            }
+
+            .stars{
+                color: $star-color;
+            }
+        }
+
+        .btn-buy{
+           
+           width: 200px;
+           position: relative;
+
+           p,i{
+               position: absolute;
+               top: 23px;
+           }
+
+           p{
+               left: 14px;
+               font-weight: 600;
+           }
+
+           i{
+            right: 14px;
+            font-size: 22px;
+           }
+
+           button{
+               height: 60px;
+               min-width: 200px;
+           }
+        }
+        
+    }
+}
+
+
+.gpay-card-info-container.black, .gpay-card-info-animation-container.black{
+    background-color: $primary-color !important;
+}
+
+.gpay-card-info-container.black::before{
+    content: 'Add to cart';
+    position: absolute;
+    top: 23px;
+    left: 14px;
+    font-weight: 600;
+}
+
+.gpay-card-info-container.black::after{
+    content: '\f217';
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 23px;
+    right: 14px;
+    font-size: 22px;
+}
+
+.gpay-card-info-animated-progress-bar,svg,iframe{
+    display: none !important;
+}
+
+button div,button>div>iframe{
+    display: none !important;
+}
+
+.gpay-card-info-animation-gpay-logo{
+    display: none !important;
+}
+
+.gpay-card-info-animation-container-fade-out{
+    animation-duration: 0ms !important;
+}
+
+.b3-updatable-cart .b3-updatable-cart-dialog-summary-value{
+    display: none !important;
+}
