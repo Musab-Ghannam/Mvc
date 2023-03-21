@@ -400,25 +400,11 @@
 
                                                                                 <li>
 
-                                                                                    @*<a class="timing" href="#" style="margin-top:20PX">*@
-                                                                                    @*<span>@DateTime.Now.AddHours(inc).Hour</span>*@ @*<span>AM</span>*@
-
-                                                                                    @*<input type="submit" value="@formm" class="days" name="selectedSlot" />*@
+                                                                               
 
 
                                                                                     <span>
-                                                                                        @*<a href="@Url.Action("selectedslot", "DoctorsInfo", new { doctorId = Model.doctor[0].doctorId, arrow = "selectedslot" })" class="timing" style="margin-top:20PX">*@
-
-                                                                                        @*<input type="hidden" value="" name="btnn" />*@
-
-
-                                                                                        @*@foreach (var item in Model.appoint)
-                                                                                        {
-                                                                                            if (item.starttime.substring(0,6).contains(formm)&& item.starttime.substring(-1, -5).contains(ViewBag.currentday.Substring(0, 5)))
-                                                                                            {
-
-                                                                                            }
-                                                                                        }*@
+                                                                   
 
 
 
@@ -687,18 +673,11 @@
                                         </div>
                                     </div>
                                     <h4 style="align-items:center;text-align:center;margin-top:50PX"><span style="background-color: #20BBBD; padding: 2px 7px; border-radius: 70%; margin-right: 7px">@Session["count"]</span>Slot is selected</h4>
-                                    @*<h1>@Session["day"]</h1>*@
+                                
 
 
                                     <span>
-                                        @*@if (!string.IsNullOrEmpty(ViewBag.btn))
-                                        {
-                                            var btnValues = ViewBag.btn.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                                            for (int i =0 ; i < btnValues.Length; i++)
-                                            {
-                                                <input type="text" name="btnValue" value="@btnValues[i]"  style="@ViewBag.ButtonStyle"  />
-                                            }
-                                        }*@
+                                 
 
                                         @{
 
@@ -731,13 +710,7 @@
                                                     @for (int i = 0; i < countter; i++)
                                                     {
                                                         <div style="position:relative;">
-                                                            @*<a href="@Url.Action("RemoveBtn", "DoctorsInfo", new { doctorId = Model.doctor[0].doctorId })" style="font-size: 12px; border: none; position: absolute; right: -2px; top: 17px; background-color: transparent" title="index">
-                                                                X
-                                                            </a>*@
-
-                                                            @*<a href="@Url.Action("booking", "DoctorsInfo", new { doctorId = Model.doctor[0].doctorId, date = date, time = time, index = i, remove = "true" })" style="font-size: 12px; border: none; position: absolute; right: -2px; top: 17px; background-color: transparent">X</a>*@
-
-                                                            @*<input type="submit" value="x" name="index" class="days timing new" style="font-size: 12px; border: none; position: absolute; right: -20px; top: 5px; background-color: transparent" />*@
+    
 
 
 
@@ -747,14 +720,7 @@
 
                                                             <input type="hidden" value="@btnValues[i]," name="valueToRemove" class="days timing new" style="font-size: 12px; border: none; position: absolute; right: -20px; top: 5px; background-color: transparent" />
                                                             <button style="font-size:17px;border:none;position:absolute;right:0px;top:17px;background-color:transparent">X</button>
-                                                            @*@if (i < countter && i < btnValues.Length)
-                                                            {
-                                                                <input type="submit" name="valueToRemove" value="@btnValues[i],," />
-                                                            }*@
-                                                            @*<input type="hidden" name="valueToRemove" value="@btnValues[i]" />*@
 
-                                                            @*<span class="close-icon" onclick="removeBtnValue( ' @btnValues[i] ')">X</span>*@
-                                                            @*<button type="button" value="@btnValues[i]" class=" btn-sm" name="close" onclick="removeInput(@i)" style="font-size:12px;border:none;position:absolute;right:-5px;top:17px;background-color:transparent">X</button>*@
                                                             <input type="submit" value="@btnValues[i]" name="index" class="days timing new" style="@ViewBag.ButtonStyle" />
 
                                                         </div>
@@ -762,13 +728,7 @@
 
                                                     }
 
-                                                    @*@foreach (var button in ViewBag.btn)
-                                                    {
-                                                        <div class="button-container">
-                                                            <input type="submit" value="@button" name="index" class="days timing new" style="@ViewBag.ButtonStyle" />
-                                                            <a href="@Url.Action("RemoveButton", "MyController", new { index = ViewBag.btn.IndexOf(button) })" class="close-icon">&#x2716;</a>
-                                                        </div>
-                                                    }*@
+                                             
 
                                                 </div>
 
@@ -777,7 +737,6 @@
 
                                         }
 
-                                        @*<input type="submit" value="@ViewBag.btn" name="" class="days timing new" style="@ViewBag.ButtonStyle" />*@
 
                                     </span>
 

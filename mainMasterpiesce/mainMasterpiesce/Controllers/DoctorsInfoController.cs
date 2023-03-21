@@ -680,7 +680,7 @@ namespace mainMasterpiesce.Controllers
 
             if (User.IsInRole("doctor"))
             {
-                //viewBag.disabled = disabled;
+                
                 ViewBag.disabled = "disabled";
             }
             else

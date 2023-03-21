@@ -202,6 +202,12 @@ namespace mainMasterpiesce.Controllers
 
 
             }
+            Session["countarrow"] = 0;
+            Session["count"] = 0;
+
+            Session["fullcount"] = 0;
+            Session["fulldisplay"] = null;
+            System.Web.HttpContext.Current.Session["btnValues"] = 0;
 
             return View(Tuple.Create(doct, appointment));
 
@@ -238,18 +244,215 @@ namespace mainMasterpiesce.Controllers
 
         }
 
-        public ActionResult NotAvailable()
+        public ActionResult NotAvailable(string day,string btnn,string valueToRemove,string wholeday)
         {
 
+
+
+
+
+     
+
+            ViewBag.fulldisplay = Session["fulldisplay"];
             int count = (int)(Session["countarrow"] ?? 0);
 
-            ViewBag.weeks = count;
-
-
 
             ViewBag.weeks = count;
+
+
+            ViewBag.currentday = day;
+
 
             ViewBag.InputStyle = "color:#20BBBD; font-weight:bold";
+
+            //flaggg
+
+            if (day != null)
+            {
+                Session["day"] = day;
+            }
+
+            bool flagsession = true;
+
+         
+
+
+            bool flag = false;
+            if (day == null && Session["day"] != null)
+            {
+
+               
+
+                day = Session["day"].ToString();
+           
+            }
+            ViewBag.currentday = day;
+            if (day == null && Session["day"] == null)
+            {
+
+                ViewBag.currentday = DateTime.Now.AddDays(count).ToString("dd/MM/yy");
+               
+
+
+                flag = true;
+            }
+
+
+            ViewBag.flagsession = flag;
+
+
+            for (int i = ViewBag.weeks; i < ViewBag.weeks + 7; i++)
+            {
+                if (ViewBag.currentday == @DateTime.Now.AddDays(i).ToString("dd/MM/yy"))
+                {
+
+
+
+                    flag = true;
+
+                }
+
+
+            }
+
+
+            ViewBag.flag = flag;
+
+
+
+
+
+
+
+
+            //flagg
+
+
+            //count
+
+            ViewBag.btn = System.Web.HttpContext.Current.Session["btnValues"] as string ?? string.Empty;
+
+            string btnValuedate = Request.Form["btnn"];
+     
+            string btnValue = Request.Form["btnn"];
+            ViewBag.flagcolor = false;
+            bool flagcolor = false;
+
+
+            if (btnn == btnValue)
+            {
+                ViewBag.selectedslot = ";background-color: red;";
+
+            }
+
+
+
+
+            string buttonStyle = "background-color: #E9E9E9; margin-top: 20px;";
+            ViewBag.ButtonStyle = buttonStyle;
+            int btncount = (int)(Session["count"] ?? 0);
+
+
+            int fullcount = (int)(Session["fullcount"] ?? 0);
+            bool flagbtnselectedseasion = false;
+
+
+
+            bool flaghavereserv = true;
+
+            if (!string.IsNullOrEmpty(wholeday))
+            {
+
+            }
+
+                if (flaghavereserv)
+            {
+
+
+                if (!string.IsNullOrEmpty(btnValue))
+                {
+                    btncount++;
+                    Session["count"] = btncount;
+
+                    //for (int i = 0; i < countbtn; i++)
+                    //{
+
+
+                    //}
+
+                    if(btnValue.Length > 20)
+                    {
+                        fullcount++;
+                        Session["fullcount"] = fullcount;
+
+                    }
+
+
+
+
+
+                    bool flaffully = true;
+
+                    if (!string.IsNullOrEmpty(ViewBag.currentday))
+                    {
+                        ViewBag.btn += btnValue + ViewBag.currentday.Substring(0, 5) + ",";
+                        if (btnValue.Length > 20)
+                        {
+                            flaffully = false;
+                            ViewBag.fulldisplay += btnValue;
+                    
+                            System.Web.HttpContext.Current.Session["fulldisplay"] = ViewBag.fulldisplay;
+
+
+
+                        }
+
+                        ViewBag.flagcolor = true;
+
+                    }
+
+
+
+                    ViewBag.fully = flaffully;
+
+                    flagbtnselectedseasion = true;
+
+                    System.Web.HttpContext.Current.Session["btnValues"] = ViewBag.btn;
+
+
+                }
+            }
+            ViewBag.flagbtnselectedseasion = flagbtnselectedseasion;
+
+
+            //ViewBag.counter= countbtn;
+
+            Session["currentday"] = ViewBag.currentday;
+            if (!string.IsNullOrEmpty(valueToRemove))
+            {
+
+                ViewBag.btn = ViewBag.btn.Replace(valueToRemove, string.Empty);
+
+                if (System.Web.HttpContext.Current.Session["btnValues"] != null && System.Web.HttpContext.Current.Session["btnValues"].ToString().Contains(valueToRemove))
+                {
+                    string btnValues = System.Web.HttpContext.Current.Session["btnValues"].ToString();
+                    btnValues = btnValues.Replace(valueToRemove, string.Empty);
+                    System.Web.HttpContext.Current.Session["btnValues"] = btnValues;
+                    btncount--;
+                    Session["count"] = btncount;
+                }
+
+
+            }
+            ViewBag.selectedsloot += Session["currentday"];
+          
+
+
+          
+
+
+
+
 
 
             var mainId = User.Identity.GetUserId();
@@ -270,12 +473,84 @@ namespace mainMasterpiesce.Controllers
             ViewBag.patientcount = patientcount;
 
 
+
+
+
+
+            bool available = true;
+
+            //if (!string.IsNullOrEmpty(wholeday) && ViewBag.EnabledButtonsString == wholeday && btnn == null)
+            //{
+
+            //    string btnValues = System.Web.HttpContext.Current.Session["btnValues"].ToString();
+            //    available = false;
+            //    btnValues = btnValues.Replace(valueToRemove, string.Empty);
+            //    System.Web.HttpContext.Current.Session["btnValues"] = btnValues;
+            //    btncount--;
+            //    Session["count"] = btncount;
+
+            //}
+            ViewBag.available = available;
+
+
+
+
+
+
+
+
             return View(Tuple.Create(doct, appointment));
 
 
 
         }
 
+        public ActionResult fullday(string wholeday)
+        {
+
+            int fullcount = (int)(Session["fullcount"] ?? 0);
+
+            if (!string.IsNullOrEmpty(wholeday))
+            {
+
+                fullcount++;
+                Session["fullcount"] = fullcount;
+
+
+                string fulldisplay = (string)Session["fulldisplay"] ?? "";
+
+                // Append the new value to the existing value
+                fulldisplay += wholeday;
+
+                // Store the new value back in the session
+                Session["fulldisplay"] = fulldisplay;
+
+
+
+
+            }
+
+                  
+
+               
+
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    return RedirectToAction("NotAvailable");
+        }
 
 
 
